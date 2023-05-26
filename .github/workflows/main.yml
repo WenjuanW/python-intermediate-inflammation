@@ -32,7 +32,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 --proxy http://azpzen.astrazeneca.net:9480 install -r requirements.txt
+        pip3 install -r requirements.txt
 
     - name: Test with PyTest
       run: |
