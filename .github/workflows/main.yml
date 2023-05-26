@@ -22,7 +22,7 @@ jobs:
     # Next we need to check out repository, and set up python
     # A 'name' is just an optional label shown in the log - helpful to classify progress - and can be anything
     - name: Checkout repository
-      uses: actions/setup-python@v2
+      uses: actions/checkout@v2
 
     - name: Set up Python 3.9
       uses: actions/setup-puthon@v2
