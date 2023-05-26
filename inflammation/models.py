@@ -48,10 +48,15 @@ def patient_normalise(data):
     """
     Normalise patient data from a 2D inflammation data array.
 
-    NaN values are ignored, and normallised to 0.
+    Any NaN values are ignored, and normallised to 0.
 
-    Negative values are rounded to 0.
+    :param data: 2D array of inflammation data
+    :type data: ndarray
     """
+    if not ininstance(data, np.ndarray):
+        raise TypeError('data input should be ndarray')
+    if len(data.shape) != 2:
+        raise ValueError('inflammation array should be 2-dimensional')
     if np.array(data < 0):
         raise ValueError('Inflammation values should not be negative')
 
@@ -59,6 +64,5 @@ def patient_normalise(data):
     with np.errstate(invalid='ignore', divide='ignore'):
         normalised = data / max[:, np.newaxis]
     normalised[np.isnan(normalised)] = 0
-    normalised[normalised < 0] = 0
     return normalised
 
