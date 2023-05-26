@@ -30,10 +30,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install Python dependencies
-      run: 
+      run: |
         python3 -m pip install --upgrade pip
-        pip3 install -r requirements.txt
+        pip3 --proxy http://azpzen.astrazeneca.net:9480 install -r requirements.txt
 
     - name: Test with PyTest
-      run:
+      run: |
         python -m pytest --cov=inflammation.models tests/test_models.py
